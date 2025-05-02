@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Account – Fling Music</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-default">
+
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-brand">Fling Music</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="signin.html">Sign In</a></li>
+        <li><a href="signup.html" class="active">Sign Up</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container content">
+    <h1>Create Account</h1>
+    <form id="signupForm" class="auth-form">
+      <label for="signupUsername">Username</label>
+      <input id="signupUsername" name="username" required>
+
+      <label for="signupPassword">Password</label>
+      <input id="signupPassword" name="password" type="password" required>
+
+      <button type="submit" class="primary-btn">Sign Up</button>
+      <p id="signupMessage" class="message"></p>
+    </form>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      &copy; 2025 Fling Music
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

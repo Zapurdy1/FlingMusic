@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fling Music - Scan</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/html5-qrcode"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-brand">Fling Music</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="signin.html">Sign In</a></li>
+      <li><a href="signup.html">Sign Up</a></li>
+      <li><a href="profile.html">Profile</a></li>
+      <li><a href="scan.html" class="active">Scan</a></li>
+    </ul>
+  </nav>
+
+  <main class="content">
+    <h1>Scan QR Code</h1>
+    <p>Use your camera to scan another user's one-time QR code.</p>
+
+    <div id="reader" style="width: 300px;"></div>
+    <div id="scanResult" class="message"></div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 Fling Music. All rights reserved.</p>
+  </footer>
+
+  <script src="main.js"></script>
+  <script>
+
+    const scanner = new Html5QrcodeScanner("reader", { fps: 10, qrbox: 250 });
+    function onScanSuccess(decodedText) {
+      scanner.clear().then(() => {
+        document.getElementById("scanResult").textContent = "Scanned token: " + decodedText;
+        fetch("/api/qrEnter", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ token: decodedText })
+        })
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById("scanResult").textContent = data.message;
+        })
+        .catch(err => console.error(err));
+      });
+    }
+    scanner.render(onScanSuccess);
+  </script>
+</body>
+</html>

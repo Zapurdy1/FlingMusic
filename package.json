@@ -1,0 +1,22 @@
+{
+  "name": "fling-music-minimal",
+  "version": "1.0.0",
+  "description": "Fling Music group‑centric playlist app",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.9.0",
+    "body-parser": "^2.2.0",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "express-session": "^1.18.1",
+    "mysql2": "^3.14.0",
+    "qrcode": "^1.5.4",
+    "spotify-web-api-node": "^5.0.2"
+  }
+}

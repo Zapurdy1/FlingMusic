@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fling Music – Profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <!-- QR code library -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcode"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-brand">Fling Music</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="signin.html">Sign In</a></li>
+      <li><a href="signup.html">Sign Up</a></li>
+      <li><a href="profile.html" class="active">Profile</a></li>
+      <li><a href="scan.html">Scan</a></li>
+    </ul>
+  </nav>
+ 
+
+  <main class="content profile-content">
+    <h1>Your Profile</h1>
+
+    <!-- Profile Info -->
+    <section class="profile-section">
+      <h2>Account Information</h2>
+      <p>Your user ID is <span id="userIdDisplay"></span></p>
+      <div class="profile-info">
+        <div class="profile-pic-container">
+          <img id="profilePicPreview"
+               src="images/default-profile.png"
+               alt="Profile Picture"
+               class="profile-pic">
+          <div>
+            <label for="profilePicInput" class="file-label">Change Profile Picture:</label>
+            <input type="file" id="profilePicInput" accept="image/*">
+          </div>
+        </div>
+        <div class="user-preference-display">
+          <p><strong>Current Preference:</strong>
+             <span id="currentUserPref">Loading…</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Music Preference -->
+    <section class="pref-container">
+      <h2>Music Preference</h2>
+      <label for="musicPrefSelect">Select your favorite genre:</label>
+      <select id="musicPrefSelect">
+        <option>Loading genres…</option>
+      </select>
+      <button id="updatePrefBtn" class="primary-btn">Update Preference</button>
+    </section>
+
+    <!-- Color Scheme -->
+    <section class="color-scheme-section">
+      <h2>Customize Color Scheme</h2>
+      <p>Pick a theme:</p>
+      <select id="colorSchemeSelect">
+        <option value="default">Default</option>
+        <option value="dark">Dark</option>
+        <option value="pastel">Pastel</option>
+        <option value="blue">Blue</option>
+      </select>
+      <button id="applyColorSchemeBtn" class="secondary-btn">Apply Theme</button>
+    </section>
+
+    <!-- QR Code Presence -->
+    <section class="qr-section">
+      <h2>Room Presence</h2>
+      <p>Generate a one-time QR code to mark yourself present:</p>
+      <button id="generateQrBtn" class="primary-btn">Generate QR Code</button>
+      <div id="qrcode" class="qr-code"></div>
+    </section>
+
+    <!-- Leave Room -->
+    <div class="leave-room-wrapper">
+      <button id="leaveRoomBtn" class="danger-btn">Leave Room</button>
+    </div>
+
+    <!-- Room Users -->
+    <section class="room-users-section">
+      <h2>Others in the Room</h2>
+      <ul id="roomUsersList" class="room-users-list">
+        <!-- populated by main.js -->
+      </ul>
+      <section class="groups-section">
+        <h2>Your Groups</h2>
+      
+        <!-- Create New Group -->
+        <div class="new-group">
+          <input
+            type="text"
+            id="newGroupName"
+            placeholder="New group name…"
+            class="playlist-input">
+          <button id="createGroupBtn" class="primary-btn">Create Group</button>
+        </div>
+      
+        <!-- List of Groups -->
+        <ul id="groupsList" class="room-users-list">
+          <!-- JavaScript will populate each group as:
+            <li data-group-id="5">
+              <span class="group-name">Rock Lovers</span>
+              <button class="view-members-btn">View Members</button>
+              <button class="leave-group-btn">Leave</button>
+              <button class="add-member-btn">Add Member</button>
+              <button class="delete-group-btn">Delete Group</button>
+            </li>
+          -->
+        </ul>
+        <section class="saved-playlists-section">
+          <h2>Saved Playlists for <span id="currentGroupName">[none]</span></h2>
+          <ul id="savedPlaylistsList" class="room-users-list">
+            <!-- JS will fill this with:
+              <li data-record-id="123" data-playlist-id="spotify:playlist:ABC">
+                <strong>Fling Room Playlist</strong> — 4/30/2025 09:00 PM
+                <button class="view-playlist-btn">View</button>
+                <button class="delete-playlist-btn">Delete</button>
+              </li>
+            -->
+          </ul>
+          <div id="embed"></div>
+
+        </section>
+        
+    <!-- Feedback -->
+    <div id="profileMessage" class="message"></div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 Fling Music. All rights reserved.</p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

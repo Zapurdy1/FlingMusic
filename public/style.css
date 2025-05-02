@@ -1,0 +1,318 @@
+/*────────────────────────────────────────────────────────────────────────────
+   Fling Music – style.css
+────────────────────────────────────────────────────────────────────────────*/
+
+/* 1) CSS Variables & Themes */
+:root {
+  --color-bg:       #fafafa;
+  --color-text:     #333;
+  --color-primary:  #1db954;
+  --color-secondary:#191414;
+  --color-accent:   #00ff59;
+  --color-muted:    #888;
+  --radius:         4px;
+  --transition:     0.3s ease;
+}
+
+body.theme-default {
+  --color-bg:   hwb(0 100% 0%);
+  --color-text: #000000;
+  --color-primary:  #22cd5b;
+}
+body.theme-dark {
+  --color-bg:   #121212;
+  --color-text: #eee;
+  --color-primary:  #1db954;
+}
+body.theme-pastel {
+  --color-bg:   #fdf6e3;
+  --color-text: #657b83;
+  --color-primary:  #2aa198;
+}
+body.theme-blue {
+  --color-bg:   #e0f7fa;
+  --color-text: #006064;
+  --color-primary:  #00838f;
+}
+
+* {
+  box-sizing: border-box;
+  transition: var(--transition);
+}
+
+body {
+  margin: 0;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+/* Centered container */
+.container {
+  width: 90%;
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+/* Links */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/*────────────────────────────────────────────────────────────────────────────
+   Navbar
+────────────────────────────────────────────────────────────────────────────*/
+.navbar {
+  background-color: var(--color-secondary);
+  color: white;
+  padding: 0.75rem 0;
+}
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--color-accent);
+}
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+.nav-links li {
+  margin-left: 1rem;
+}
+.nav-links a {
+  color: white;
+  padding: 0.5rem;
+  border-radius: var(--radius);
+}
+.nav-links a.active,
+.nav-links a:hover {
+  background-color: var(--color-primary);
+}
+
+/*────────────────────────────────────────────────────────────────────────────
+   Hero Section
+────────────────────────────────────────────────────────────────────────────*/
+.hero-section {
+  padding: 4rem 0;
+  text-align: center;
+  background: url('images/hero-bg.jpg') center/cover no-repeat;
+  color: rgb(0, 0, 0);
+}
+.hero-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+.hero-section p {
+  font-size: 1.2rem;
+}
+
+/*────────────────────────────────────────────────────────────────────────────
+   Buttons
+────────────────────────────────────────────────────────────────────────────*/
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: var(--radius);
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  transition: background-color var(--transition);
+}
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Primary */
+.primary-btn {
+  background-color: var(--color-primary);
+  color: white;
+}
+.primary-btn:hover:not(:disabled) {
+  background-color: var(--color-accent);
+}
+
+/* Secondary */
+.secondary-btn {
+  background-color: var(--color-secondary);
+  color: rgb(224, 0, 0);
+}
+.secondary-btn:hover:not(:disabled) {
+  background-color: #333;
+}
+
+/* Danger */
+.danger-btn {
+  background-color: #e74c3c;
+  color: white;
+}
+.danger-btn:hover:not(:disabled) {
+  background-color: #c0392b;
+}
+
+/*────────────────────────────────────────────────────────────────────────────
+   Spotify Home Panel
+────────────────────────────────────────────────────────────────────────────*/
+.spotify-home {
+  padding: 2rem 0;
+  background-color: #f1f1f1;
+}
+.spotify-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+.spotify-actions {
+  flex: 1 1 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.playlist-embed {
+  flex: 2 1 300px;
+  min-height: 380px;
+}
+
+/*────────────────────────────────────────────────────────────────────────────
+   Now Playing
+────────────────────────────────────────────────────────────────────────────*/
+.now-playing {
+  padding: 2rem 0;
+}
+.spotify-status {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.track-display {
+  font-style: italic;
+}
+
+/*────────────────────────────────────────────────────────────────────────────
+   Info Sections
+────────────────────────────────────────────────────────────────────────────*/
+.info-section {
+  margin: 2rem 0;
+}
+.info-section h2 {
+  margin-bottom: 0.5rem;
+}
+.info-section p,
+.info-section ol {
+  margin-left: 1rem;
+}
+
+/*────────────────────────────────────────────────────────────────────────────
+   Profile Page
+────────────────────────────────────────────────────────────────────────────*/
+.profile-content {
+  padding: 2rem 0;
+}
+.profile-section {
+  margin-bottom: 2rem;
+}
+.profile-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: center;
+}
+.profile-pic-container {
+  text-align: center;
+}
+.profile-pic {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--color-primary);
+}
+.file-label {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--color-muted);
+}
+
+/* Preference & Theme */
+.pref-container,
+.color-scheme-section,
+.qr-section {
+  margin-bottom: 2rem;
+}
+.pref-container label,
+.color-scheme-section p {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+#musicPrefSelect,
+#colorSchemeSelect {
+  padding: 0.4rem 0.6rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-muted);
+  margin-right: 0.5rem;
+}
+
+/* QR Code */
+.qr-code {
+  margin-top: 1rem;
+}
+.qr-code img,
+.qr-code canvas {
+  width: 200px;
+  height: 200px;
+}
+
+/* Room Users */
+.room-users-list {
+  list-style: disc inside;
+  padding-left: 0;
+}
+.leave-room-wrapper {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Feedback Message */
+.message {
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+/*────────────────────────────────────────────────────────────────────────────
+   Footer
+────────────────────────────────────────────────────────────────────────────*/
+.footer {
+  background-color: var(--color-secondary);
+  color: white;
+  padding: 1rem 0;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/*────────────────────────────────────────────────────────────────────────────
+   Responsive
+────────────────────────────────────────────────────────────────────────────*/
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .spotify-container {
+    flex-direction: column;
+  }
+  .profile-info {
+    flex-direction: column;
+  }
+}

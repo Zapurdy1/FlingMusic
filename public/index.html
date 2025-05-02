@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fling Music – Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-default">
+
+  <!-- NAVBAR -->
+  <header>
+    <nav class="navbar">
+      <div class="container nav-container">
+        <a href="index.html" class="nav-brand">Fling Music</a>
+        <ul class="nav-links">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="signin.html">Sign In</a></li>
+          <li><a href="signup.html">Sign Up</a></li>
+          <li><a href="profile.html">Profile</a></li>
+          <li><a href="scan.html">Scan</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero-section">
+    <div class="container">
+      <h1>Welcome to Fling Music</h1>
+      <p>Your group-centric music experience, right at home.</p>
+    </div>
+  </section>
+
+  <!-- SPOTIFY CONTROL PANEL -->
+  <section class="spotify-home">
+    <div class="container spotify-container">
+      <!-- Spotify Connect & Create -->
+      <div class="spotify-actions">
+        <button id="connectSpotifyBtn" class="primary-btn">Connect Spotify</button>
+        <button id="disconnectSpotifyBtn" class>Disconnect Spotify</button>
+        <button id="createPlaylistBtn" class="primary-btn">Create Room Playlist</button>
+      </div>
+
+      <!-- Embed playlist -->
+      <div id="embed" class="playlist-embed"></div>
+      <div class="save-playlist-section">
+        <select id="saveGroupSelect" disabled>
+          <option>Loading groups…</option>
+        </select>
+        <button id="savePlaylistBtn" disabled>Save to Group</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOW PLAYING -->
+  <section class="now-playing">
+    <div class="container">
+      <h2>Now Playing</h2>
+      <p id="spotifyStatus" class="spotify-status">Not connected</p>
+      <div id="trackDisplay" class="track-display">No track information</div>
+    </div>
+  </section>
+
+  <!-- INFO SECTIONS -->
+  <main class="content">
+    <div class="container">
+      <section class="info-section">
+        <h2>Why Fling?</h2>
+        <p>
+          Fling Music lets multiple users share their music preference and create a shared playlist. 
+          No more fighting over the playlist—everyone gets to hear what gets them movin!
+        </p>
+      </section>
+
+      <section class="info-section">
+        <h2>How It Works</h2>
+        <ol>
+          <li>Create an account or sign in.</li>
+          <li>Connect a Spotify account</li>
+          <li>Generate a one-time QR code to join the room.</li>
+          <li>Watch as the playlist updates with everyone's tastes!</li>
+        </ol>
+      </section>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Fling Music. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
