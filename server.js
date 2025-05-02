@@ -26,9 +26,6 @@ app.use(session({
   }
 }));
 
-
-
-
 // —————— Middleware ——————
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -53,21 +50,37 @@ app.get('/api/spotify/login', (req, res) => {
 });
 
 // —————— 3) Spotify Callback ——————
+// callback handler (must be registered in your Spotify app’s Redirect URIs)
 app.get('/callback', async (req, res) => {
   const code = req.query.code;
-  if (!code) return res.redirect('/');
+  const frontEnd = process.env.FRONTEND_ORIGIN;   // e.g. "https://flingmusic.onrender.com"
+
+  // if Spotify didn’t send us a code, bail
+  if (!code) {
+    return res.redirect(`${frontEnd}/?connected=false`);
+  }
+
   try {
+    // exchange the code for access & refresh tokens
     const data = await spotifyApi.authorizationCodeGrant(code);
+
+    // persist in session
     req.session.spotifyAccessToken  = data.body.access_token;
     req.session.spotifyRefreshToken = data.body.refresh_token;
+
+    // also configure the client for subsequent calls
     spotifyApi.setAccessToken(data.body.access_token);
     spotifyApi.setRefreshToken(data.body.refresh_token);
-    res.redirect('/');
+
+    // send user back to your SPA with a flag
+    res.redirect(`${frontEnd}/?connected=true`);
   } catch (err) {
     console.error('Spotify callback error', err);
-    res.redirect('/');
+    // if anything goes wrong, still redirect home so your UI can show an error
+    res.redirect(`${frontEnd}/?connected=false`);
   }
 });
+
 
 // —————— Database Pool ——————
 const db = mysql.createPool({
