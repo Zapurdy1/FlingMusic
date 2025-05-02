@@ -7,13 +7,19 @@ const crypto        = require('crypto');
 const QRCode        = require('qrcode');
 const axios         = require('axios');
 const SpotifyWebApi = require('spotify-web-api-node');
+const cors          = require('cors');
 
 const app = express();
 
 // —————— Sessions ——————
 // tell Express “yes, I’m behind CloudFront/ELB, so I want
+// ➤ allow your React/SPA origin to talk & share cookies
+app.use(cors({
+  origin: process.env.FRONTEND_ORIGIN, // e.g. "https://flingmusic.onrender.com"
+  credentials: true
+}));
 
-app.set('trust', 1);
+app.set('trust proxy', 1);
 
 app.use(session({
   secret: process.env.SESSION_SECRET,
