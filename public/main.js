@@ -458,6 +458,39 @@ function attachGroupButtons() {
     };
   });
 }
+// ————————————————
+// Create New Group
+// ————————————————
+document.getElementById('createGroupBtn')?.addEventListener('click', async () => {
+  const nameEl = document.getElementById('newGroupName');
+  const groupName = nameEl.value.trim();
+  if (!groupName) {
+    return alert('Please enter a group name');
+  }
+
+  try {
+    const res = await fetch(`${BASE}/api/groups`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        groupName,
+        createdBy: currentUser.id
+      })
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      return alert('Error creating group: ' + (data.message || res.status));
+    }
+    alert('Group created!');
+    nameEl.value = '';
+    // refresh both lists:
+    loadGroups();
+    loadMyGroupsForSave();
+  } catch (err) {
+    console.error('Create group failed', err);
+    alert('Network error creating group');
+  }
+});
 
 // ————————————————
 // 8) Saved Playlists for a Group

@@ -12,8 +12,6 @@ const cors          = require('cors');
 const app = express();
 
 // —————— Sessions ——————
-// tell Express “yes, I’m behind CloudFront/ELB, so I want
-// ➤ allow your React/SPA origin to talk & share cookies
 app.use(cors({
   origin: true, // e.g. "https://flingmusic.onrender.com"
   credentials: true
